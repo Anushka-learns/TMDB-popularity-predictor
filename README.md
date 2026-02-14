@@ -1,4 +1,4 @@
-# 🎬 TMDB Movie Popularity Predictor API
+# 🎬 TMDB Movie Revenue Predictor API
 
 A Flask-based Machine Learning API that predicts movie popularity using budget, runtime, and vote count.
 
