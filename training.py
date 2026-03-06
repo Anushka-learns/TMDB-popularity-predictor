@@ -1,13 +1,23 @@
 import pandas as pd
-df = pd.read_csv('tbdb2.csv')
-df=df[[ 'runtime','budget','revenue','vote_average','vote_count','popularity']]
-df= df.dropna()
-print(df.columns)
 from sklearn.linear_model import LinearRegression
 import pickle
-X=df[['runtime','budget','vote_count']]
-Y=df[['revenue','popularity']]
-model =LinearRegression()
-model.fit(X,Y)
-pickle.dump(model,open('model.pkl','wb'))
-print("model trained and saved")
+
+# Load dataset
+df = pd.read_csv("tbdb2.csv")
+
+# Select relevant columns
+df = df[['runtime','budget','vote_count','revenue','popularity']]
+df = df.dropna()
+
+# Features and targets
+X = df[['runtime','budget','vote_count']]
+y = df[['revenue','popularity']]
+
+# Train model
+model = LinearRegression()
+model.fit(X, y)
+
+# Save model
+pickle.dump(model, open("model.pkl","wb"))
+
+print("Model trained and saved successfully")
