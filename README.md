@@ -1,54 +1,124 @@
-# 🎬 TMDB Movie Revenue Predictor API
+🎬 TMDB Movie Performance Predictor
 
-A Flask-based Machine Learning API that predicts movie popularity using budget, runtime, and vote count.
+A machine learning web application that predicts movie revenue and popularity using key features from the TMDB dataset. The model is trained using Linear Regression and deployed through a Flask-based interface for real-time predictions.
 
-## 🚀 Tech Stack
-- Python
-- Flask
-- Pandas
-- Scikit-learn
+🚀 Features
 
-## 📊 Model
-Linear Regression trained on TMDB 5000 Movies dataset.
+-Predicts movie revenue and popularity score
 
-Features used:
-- Runtime
-- Budget
-- Vote Count
+-Uses important features such as:
 
-Target:
-- Popularity
+-Runtime
 
-## 🛠 How to Run
+-Budget
 
-1. Clone repo
-2. Create virtual environment
-3. Install dependencies
+-Vote Count
 
-pip install -r requirements.txt
+-Interactive Flask web interface
 
-4. Run training (if needed)
+-Trained using scikit-learn Linear Regression
+
+-Model saved using Pickle for deployment
+
+🧠 Machine Learning Workflow
+
+-Data preprocessing and feature selection
+
+-Training a Linear Regression model
+
+-Model evaluation using R² score
+
+-Saving the trained model with Pickle
+
+-Deploying predictions via Flask web app
+
+🛠️ Tech Stack
+
+-Python
+
+-Pandas
+
+-Scikit-learn
+
+-Flask
+
+-NumPy
+
+-HTML / CSS
+
+📊 Dataset
+
+The project uses a processed version of the TMDB movie dataset, containing information such as:
+
+Runtime
+
+Budget
+
+Vote Count
+
+Revenue
+
+Popularity
+
+These features are used to train the regression model.
+
+▶️ Running the Project
+
+1️⃣ Clone the repository
+
+git clone https://github.com/Anushka-learns/TMDB-popularity-predictor.git
+
+cd TMDB-popularity-predictor
+
+2️⃣ Install dependencies
+
+pip install pandas scikit-learn flask numpy
+
+3️⃣ Train the model
 
 python training.py
 
-5. Start server
+4️⃣ Run the web app
 
 python app.py
 
-## 📌 API Endpoint
+Then open:
 
-POST /predict
+http://127.0.0.1:5000/
 
-Example JSON:
+📌 Example Prediction Inputs
 
-{
-  "runtime": 120,
-  "budget": 100000000,
-  "vote_count": 5000
-}
+Feature	Example
 
-Response:
+Runtime	120
 
-{
+Budget	50000000
+
+Vote Count	1500
+
+Output:
+
+Predicted Revenue
+
+Predicted Popularity Score
+
+📈 Future Improvements
+
+Add more predictive features
+
+Try advanced models like Random Forest or XGBoost
+
+Improve UI/UX for the web application
+
+Deploy the project on Railway / Render
+
+👩‍💻 Author
+
+Anushka
+B.Tech CSE (AI/ML) Student
+Passionate about AI, Data Science, and ML-powered applications
+
+
+If you want, I can also show you 3 small GitHub improvements that will make your profile look MUCH stronger to internship recruiters (based on the repos you showed).
   "predicted_revenue":504847445.6513789
 }
