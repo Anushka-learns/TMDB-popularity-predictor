@@ -1,17 +1,34 @@
-from flask import Flask,request,jsonify
+from flask import Flask, render_template, request
+import numpy as np
 import pickle
-app=Flask(__name__)
-model=pickle.load(open('model.pkl','rb'))
-@app.route('/')
+
+app = Flask(__name__)
+
+model = pickle.load(open("model.pkl","rb"))
+
+@app.route("/")
 def home():
-    return "Welcome to the movie revenue and popularity predictor API"
-@app.route('/predict',methods=['POST'])
+    return render_template("index.html")
+
+@app.route("/predict", methods=["POST"])
 def predict():
-    data=request.get_json()
-    runtime=data['runtime']
-    budget=data['budget']
-    vote_count=data['vote_count']
-    prediction=model.predict([[runtime,budget,vote_count]])
-    return jsonify({"predicted revenue ":float(prediction[0][0])})
-if __name__=='__main__':
+
+    runtime = float(request.form["runtime"])
+    budget = float(request.form["budget"])
+    vote_count = float(request.form["vote_count"])
+
+    features = np.array([[runtime, budget, vote_count]])
+
+    prediction = model.predict(features)
+
+    revenue = round(prediction[0][0],2)
+    popularity = round(prediction[0][1],2)
+
+    return render_template(
+        "index.html",
+        revenue=revenue,
+        popularity=popularity
+    )
+
+if __name__ == "__main__":
     app.run(debug=True)
